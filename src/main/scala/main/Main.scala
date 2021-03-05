@@ -18,7 +18,7 @@ object Scorer {
   private def namesToScore(names: List[Name], strategy: ScoringStrategy): Int = names.zipWithIndex.map{case(name, i) => strategy.calculate(name, i)}.sum
   private def stringToNames(input: String): List[Name] = {
     val names = input.replaceAll("\"", "").split(",")
-    Sorting.quickSort(names) //TODO: There must be a way to do this as part of a function chain rather than its own line
+    Sorting.quickSort(names)
     names.toList.map(new Name(_)) 
   }
 }
