@@ -7,6 +7,13 @@ It prints a score calculated using a simple algorithm.
 
 Execute the program by running `sbt "run ./test-names.txt"` from the project root.
 
+## TODO
+
+[ ] Figure out how to write unit tests
+[ ] Change the design to take the future requirements into account
+[ ] Cleanup
+[ ] Document assumptions
+
 ## Problem Definition
 
 Create a command line utility that will compute a score for a list of first names.
@@ -25,3 +32,7 @@ Keep the following in mind while implementing your design to make future changes
 - Another department will want to use this utility as well, but they have a much more complex name scoring algorithm.
 - This scoring feature will be added to the company's intranet web-app, allowing employees to upload and score files from their desktop.
 - The company will be switching from first names only to both first and last names in the file.
+
+### Assumptions
+
+- I made the assumption that lowercasing the names was going to be okay for calculating the score. The input is all in uppercase, but I didn't want to rely on that so I explicitly lowercase.

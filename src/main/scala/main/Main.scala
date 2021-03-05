@@ -3,34 +3,18 @@ package main
 import scala.io.Source
 import scala.util.Sorting
 
+import name.Name
+
 object Main extends App {
-  if (args.length < 1) throw new IllegalArgumentException("Missing file path argument")
-  val scorer = new Scorer
-  for (line <- Source.fromFile(args(0)).getLines) {
-    val names = scorer.stringToNames(line)
-    val scores = names.zipWithIndex.map{ case (name, i) => name.calculate(i) }
-    scores.foreach(println(_))
-    println(scores.sum)
-  }
+  if (args.length < 1) throw new IllegalArgumentException("Missing file path argument") //TODO find a better way to display an error and end execution than throwing an exception
+  println(Scorer.scoreFile(args(0)))
 }
 
-class Scorer {
-  def stringToNames(input: String): Array[Name] = {
+object Scorer {
+  def scoreFile(fileName: String) =  stringToNames(Source.fromFile(fileName).getLines.next).zipWithIndex.map{case (name, i) => name.calculate(i) }.sum
+  def stringToNames(input: String) = {
     val names = input.replaceAll("\"", "").split(",")
-    Sorting.quickSort(names)
-    names.map(x => new Name(x))
+    Sorting.quickSort(names) //TODO: There must be a way to do this as part of a function chain rather than its own line
+    names.map(new Name(_))
   }
-}
-class Name(first: String) {
-  override def toString = s"$first"
-
-  def calculate(index: Int) = {
-    val sum = Alpha.sumAlpha(first)
-    println("Sum for " + first + " was " + sum)
-    sum * (index + 1)
-  }
-}
-
-object Alpha {
-  def sumAlpha(input: String) = input.toLowerCase.toList.map(_.toInt - 96).sum
 }
