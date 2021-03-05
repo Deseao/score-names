@@ -16,7 +16,10 @@
 
 
 ### vcscode + scala ###
-.metals/*
+.metals/
+.bloop/
+.ammonite/
+metals.sbt
 
 ### Windows ###
 # Windows thumbnail cache files
