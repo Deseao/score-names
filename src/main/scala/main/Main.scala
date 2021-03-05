@@ -1,6 +1,7 @@
 package main
 
 import scala.io.Source
+import scala.util.Sorting
 
 object Main extends App {
   if (args.length < 1) throw new IllegalArgumentException("Missing file path argument")
@@ -15,11 +16,14 @@ object Main extends App {
 
 class Scorer {
   def stringToNames(input: String): Array[Name] = {
-    input.replaceAll("\"", "").split(",").map(x => new Name(x))
+    val names = input.replaceAll("\"", "").split(",")
+    Sorting.quickSort(names)
+    names.map(x => new Name(x))
   }
 }
 class Name(first: String) {
   override def toString = s"$first"
+
   def calculate(index: Int) = {
     val sum = Alpha.sumAlpha(first)
     println("Sum for " + first + " was " + sum)
