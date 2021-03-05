@@ -5,9 +5,13 @@
 ### Scala ###
 *.class
 *.log
+project/
+target/
+
 
 ### vscode ###
 .vscode/*
+.vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -20,6 +24,7 @@
 .bloop/
 .ammonite/
 metals.sbt
+.bsp/
 
 ### Windows ###
 # Windows thumbnail cache files

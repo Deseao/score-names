@@ -1,10 +1,5 @@
 package name
 
-class Name(first: String) {
+class Name(val first: String) { //Support for last names can be added by modifying this class to add a protected string to the constructor and changing the toString override
   override def toString = s"$first"
-  def calculate(index: Int) = Alpha.sumAlpha(first) * (index + 1)
-}
-
-object Alpha {
-  def sumAlpha(input: String) = input.toLowerCase.toList.map(_.toInt - 96).sum
 }
