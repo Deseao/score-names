@@ -7,6 +7,10 @@ It prints a score calculated using a simple algorithm.
 
 Execute the program by running `sbt "run ./test-names.txt"` from the project root.
 
+## Testing
+
+Run the unit tests by executing `sbt test`
+
 ## Problem Definition
 
 Create a command line utility that will compute a score for a list of first names.
